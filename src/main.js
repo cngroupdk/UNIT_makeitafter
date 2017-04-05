@@ -35,3 +35,6 @@ requireAll(require.context('./less/', true, /\.less$/));
 
 // load all Javascript files
 requireAll(require.context('./js/', true, /\.js$/));
+
+// load font awesome
+require("font-awesome-webpack");
