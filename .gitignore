@@ -1,7 +1,8 @@
-log/*
-temp/*
-vendor/*
+nette/log/*
+nette/temp/*
+nette/vendor/*
 !.gitignore
 !.htaccess
 !web.config
-app/config/config.local.neon
+nette/app/config/config.local.neon
+.idea
