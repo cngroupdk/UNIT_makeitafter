@@ -18,8 +18,8 @@ class RouterFactory
 	public static function createRouter()
 	{
 		$router = new RouteList;
-        $router[] = new ApiRoute('/api', 'Api');
-        $router[] = new Route('<presenter>/<action>', 'Homepage:default');
+        $router[] = new Route('<action>', 'Api:default');
+        $router[] = new Route('<presenter>/<action>', 'Api:default');
         return $router;
 	}
 

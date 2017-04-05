@@ -3,9 +3,10 @@
 namespace App\Presenters;
 
 
+use Nette\Application\UI\Presenter;
 use Nette\Http\IResponse;
 
-class ApiBasePresenter extends BasePresenter
+class ApiBasePresenter extends Presenter
 {
 
     public function error($message = NULL, $httpCode = IResponse::S404_NOT_FOUND)
