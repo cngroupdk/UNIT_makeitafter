@@ -34,7 +34,7 @@ module.exports = {
       },
       {
           test: /\.js$/,
-          loader: 'babel-loader',
+          loader: 'babel-loader?presets[]=es2015&presets[]=stage-2',
           include: [resolve('src'), resolve('test')]
       },
       {
