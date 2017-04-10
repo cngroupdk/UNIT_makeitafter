@@ -27,11 +27,10 @@ $(() => {
 require('bootstrap-webpack!./bootstrap.config.js');
 
 
-const requireAll = (r) => r.keys().map(r);
+const requireAll = r => r.keys().map(r);
 
 // and all less files, too
 requireAll(require.context('./less/', true, /\.less$/));
-
 
 // load all Javascript files
 requireAll(require.context('./js/', true, /\.js$/));
