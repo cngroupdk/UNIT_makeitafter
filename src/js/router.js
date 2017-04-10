@@ -10,11 +10,18 @@ $(() => {
             e.preventDefault();
         })
         .each(function() {
-            $.router.add($(this).data('href'), () => {
-                $('.route').hide();
-                $(this).show();
-            });
+            const href = $(this).data('href');
+            if (href) {
+                $.router.add(href, () => {
+                    $('.route').hide();
+                    $(this).show();
+                });
+            }
         });
+
+    $.router.addErrorHandler(url => {
+        $('.route.route-error').show();
+    });
 
     $.router.check();
 
