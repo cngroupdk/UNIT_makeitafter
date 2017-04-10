@@ -20,7 +20,8 @@
     "less-loader": "^4.0.3",
     "npm": "^4.4.4",
     "style-loader": "^0.16.1",
-    "vue": "^2.2.2"
+    "vue": "^2.2.2",
+    "ws": "^2.2.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
