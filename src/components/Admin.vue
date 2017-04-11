@@ -6,7 +6,7 @@
             <button type="button" class="btn btn-secondary" v-on:click="sort('text')">Sort by Popularity</button>
         </div>
         <div class="container">
-            <button v-for="tag in tags" v-show="tag.active" v-on:click="">{{tag.name}}</button>
+            <input-tag placeholder="Add Tag" :tags="tags" validate="text"></input-tag>
         </div>
         <div class="panel panel-primary" v-for="item of items">
             <div class="panel-body">
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+    import InputTag from 'vue-input-tag'
     export default {
 
         props: {
@@ -26,13 +27,7 @@
 
         data () {
             return {
-                tags: [{
-                        name: "critical",
-                        active: 1
-                    }, {
-                    name: "warnning",
-                    active: 1
-                    }]
+                tags: ["helpdesk"]
             };
         },
 
@@ -46,7 +41,6 @@
                 });
             },
             sort : function(criterion) {
-                console.log(this.items[0].tags);
                 this.items.sort((a, b)=> {
                    if (a[criterion] < b[criterion]) {
                        return -1;
