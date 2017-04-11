@@ -21,9 +21,11 @@
 
         mounted() {
             setTimeout(() => {
-                api.box($.router.currentParameters.box).done(response => {
-                    console.log(response);
-                    this.data = response;
+                const box = $.router.currentParameters.box;
+                api.box(box).done(box => {
+                    api.items(box).done(items => {
+                        this.data = {box, items};
+                    });
                 })
             }, 100);
         },

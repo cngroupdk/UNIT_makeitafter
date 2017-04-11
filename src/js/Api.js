@@ -28,8 +28,8 @@ export default {
         return this.request('post', 'suggestion-box', data);
     },
 
-    items(boxUrl) {
-        return this.request('get', 'suggestion-item').then(data => data.items.filter(data.box === boxUrl));
+    items(box) {
+        return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box));
     }
 
 }
