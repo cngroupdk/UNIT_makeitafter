@@ -15,7 +15,7 @@
             <div class="col-md-12">
                 <div class="well  box-innerwrap">
                      
-                        <a class="btn btn-success suggestion-open" href="#reviews-anchor"
+                        <a class="btn btn-success suggestion-open" href="#reviews-anchor" @click="$event.preventDefault()"
                            id="open-review-box">Throw a Suggestion <br><span class="fa fa-envelope-open-o">
                            </span></a>
         
