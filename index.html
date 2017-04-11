@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="make it::after">
+
+    <title>Unit 2017</title>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- standard bootstrap -->
+    <div id="header" class="jumbotron">
+        <h2>Bootstrap jumbotron <i class="fa fa-home"></i></h2>
+    </div>
+
+
+    <div class="route" data-href="/about/nested">
+        <h2>About</h2>
+        <p>Lorem ipsum
+
+            <a href="/">Back</a>
+        </p>
+    </div>
+
+    <div class="route" data-href="/">
+        <!-- all <div> with data-vue-component will be converted to components from src/components, data-vue-data="{}" can hold props-->
+        <div data-vue-component="Hello"></div>
+    </div>
+
+    <div class="route" data-href="/add" >
+        <div data-vue-component="AddRoom"></div>
+    </div>
+
+    <div class="route" data-href="/:box/admin">
+        <div data-vue-component="AdminLoader"></div>
+    </div>
+
+    <div class="route route-error">
+        <h1>404 not found</h1>
+    </div>
+
+
+</div>
+<!-- built files will be auto injected -->
+</body>
+</html>
