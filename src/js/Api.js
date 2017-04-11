@@ -7,6 +7,7 @@ export default {
     request(method, resource, data) {
         return $.ajax(this.baseUrl + resource, {
             method,
+            type: method.toUpperCase(),
             data,
         });
     },
@@ -39,6 +40,10 @@ export default {
                 box,
             }
         })
+    },
+
+    editItem(item) {
+        return requet('put', 'suggestion-item', item);
     }
 
 }
