@@ -1,7 +1,20 @@
 import $ from 'jquery';
 import './lib/jquery.router';
+import api from './Api.js';
+
 
 $(() => {
+
+
+    $.router.add("/box/:boxUrl", function(box) {
+
+        api.box(box.boxUrl).done((dataBox) => {
+
+        });
+    });
+
+
+
 
     $('.route')
         .hide()
