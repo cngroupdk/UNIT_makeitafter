@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import $ from 'jquery'
+import translate from 'vue-translate'
 
 Vue.config.productionTip = false;
 
+// the messages data
+translate.messages = require('./messages');
+Vue.use(translate);
 
 // load all Vue components
 $(() => {
