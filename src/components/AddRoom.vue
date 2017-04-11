@@ -68,15 +68,14 @@
                 if (this.isAddressUnique) {
                     api.addBox({
                         "box": {
-                            "guid": "ABCD-1234",
                             "name": this.roomName,
                             "url": this.address,
                             "type": "SUGGESTION",
                             "category": "Other",
                             "password": this.password
                     }}).done(function(message) {
-                        if (message.message == "success") {
-                            // TODO: Box is successfully aadded mesage
+                        if (message.message === "success") {
+                            // TODO: Box is successfully added mesage
                             console.log("Room added");
                         }
                     });
