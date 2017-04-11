@@ -24,10 +24,13 @@
             box: Object,
             items: Array,
         },
+        components : {
+            'input-tag': InputTag
+        },
 
         data () {
             return {
-                tags: ["helpdesk"]
+                tags: ["helpdeskissue"]
             };
         },
 
