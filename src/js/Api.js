@@ -11,7 +11,6 @@ export default {
         });
     },
 
-
     categories() {
         return this.request('get', 'category');
     },
