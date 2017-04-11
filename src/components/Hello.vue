@@ -12,6 +12,9 @@
 </template>
 
 <script>
+    import Vue from 'vue'
+    import translate from 'vue-translate'
+    Vue.use(translate)
     export default {
         name: 'hello',
         data () {
