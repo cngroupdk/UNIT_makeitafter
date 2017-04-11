@@ -5,7 +5,7 @@ export default [
     {
         path: '/',
         name: 'default',
-        component: require('./components/Hello'),
+        component: require('./components/Categories'),
 
     },
     {
