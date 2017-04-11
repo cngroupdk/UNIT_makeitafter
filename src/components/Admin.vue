@@ -4,9 +4,9 @@
         <div class="col-sm-6">
             <div class="btn-group" role="group" aria-label="Sorting">
                 <button type="button" class="btn btn-secondary" v-on:click="sort('dateTime')">Sort by Date</button>
-                <button type="button" class="btn btn-secondary" v-on:click="sort('text')">Sort by Popularity</button>
+                <button type="button" class="btn btn-secondary" v-on:click="sort('text')">Sort by Text</button>
             </div>
-            <input-tag placeholder="Add Tag" :tags="tags" validate="text"></input-tag>
+            <button type="button" v-on:click="exportData()">Export to Csv</button>
         </div>
         <div class="clearfix"></div>
         <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" @remove="remove(item.guid)" />
@@ -16,6 +16,8 @@
 <script>
     import InputTag from 'vue-input-tag'
     import api from '../js/Api.js';
+    import exporterToCsv from '../js/lib/exportCsv.js';
+
     export default {
 
         props: {
@@ -34,13 +36,13 @@
         },
 
         methods: {
-            gettags : function () {
-                this.items.forEach((item)=>{
-                    tags.push({
-                        name:item.tag,
-                        active: 1
-                    });
+            exportData : function () {
+                let array = [];
+                this.items.forEach((item) => {
+                    array.push([item.dateTime, item.text])
                 });
+
+                exporterToCsv("data.csv", array);
             },
             sort : function(criterion) {
                 this.items.sort((a, b)=> {
@@ -51,6 +53,7 @@
                    }
                 });
             },
+
             remove(guid) {
                 console.log(guid);
                 this.$emit('remove', guid);
