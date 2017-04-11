@@ -11,10 +11,10 @@
             </div>
         </div>
         <div v-show="!showLoading && !showThanks" class="row">
-            <h2>{{ box && box.name }}</h2>
+            <h2 class="suggestion-title">{{ box && box.name }}</h2>
             <div class="col-md-12">
                 <div class="well  box-innerwrap">
-                    
+                     
                         <a class="btn btn-success suggestion-open" href="#reviews-anchor"
                            id="open-review-box">Throw a Suggestion <br><span class="fa fa-envelope-open-o">
                            </span></a>
@@ -22,7 +22,7 @@
 
                     <div class="row" id="post-review-box" style="display:none;">
                         <div class="col-md-12">
-                            <input id="ratings-hidden" name="rating" type="hidden">
+                            <input id="ratings-hidden" name="rating" v-model="rating" type="hidden">
                             <textarea class="form-control animated suggestion-textarea" cols="50" id="new-review" v-model="text"
                                       placeholder="Your suggestion..." rows="5"></textarea>
 
@@ -50,8 +50,8 @@
     export default {
         data () {
             return {
-                box: false,
                 text: '',
+                box:'',
                 showLoading: false,
                 showThanks: false,
             }
@@ -65,11 +65,13 @@
         methods: {
             save() {
                 this.showLoading = true;
-                api.addItem(this.$route.params.box, this.text).done(() => {
+                api.addItem(this.$route.params.box, this.text,this.rating).done(() => {
                     this.showLoading = false;
                     this.showThanks = true;
                     this.text = '';
-                    setTimeout(() => this.showThanks = false, 1000);
+                    this.rating = 0;
+
+                    setTimeout(() => this.showThanks = false, 6000);
                 }).fail(() => {
                     this.showLoading = false;
                 })

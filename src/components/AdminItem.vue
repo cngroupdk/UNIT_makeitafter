@@ -8,6 +8,7 @@
             <div class="small text-muted" v-if="dateTime">
                 {{ formattedDateTime }}
             </div>
+            <div class="small">{{ rating }}</div>
         </div>
     </div>
 </template>
@@ -15,7 +16,7 @@
 <script>
     import moment from 'moment';
     export default {
-        props: ['text', 'dateTime'],
+        props: ['text', 'dateTime','rating'],
 
         computed: {
             formattedDateTime() {

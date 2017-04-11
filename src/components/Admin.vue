@@ -11,7 +11,7 @@
                     <input-tag placeholder="Add Tag" :tags="tags" validate="text"></input-tag>
                 </div>
                 <div class="clearfix"></div>
-                <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" @remove="remove(item.guid)" />
+                <item v-for="item of items" :text="item.text" :dateTime="item.dateTime"  :rating="item.rating" :key="item.guid" @remove="remove(item.guid)" />
             </div>
         </div>
     </div>
