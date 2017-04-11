@@ -9,6 +9,7 @@
                 {{ formattedDateTime }}
             </div>
             <div class="small">{{ rating }}</div>
+            <star-rating></star-rating>
         </div>
     </div>
 </template>
@@ -16,6 +17,7 @@
 <script>
     import moment from 'moment';
     import InputTag from 'vue-input-tag'
+    import StarRating from 'vue-star-rating'
 
     export default {
         props: ['text', 'dateTime','rating'],
@@ -27,7 +29,8 @@
         },
 
         components : {
-            InputTag, 'input-tag': InputTag
+            InputTag, 'input-tag': InputTag,
+            StarRating
         },
 
         computed: {
