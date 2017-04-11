@@ -3,7 +3,7 @@
         <Admin :items="data.items"></Admin>
     </div>
     <div v-else="data">
-        <h1 v-trans>
+        <h1>
             loading...
         </h1>
     </div>
