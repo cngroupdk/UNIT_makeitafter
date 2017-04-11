@@ -8,11 +8,7 @@
         <div class="container">
             <button v-for="tag in tags" v-show="tag.active" v-on:click="">{{tag.name}}</button>
         </div>
-        <div class="panel panel-primary" v-for="item of items">
-            <div class="panel-body">
-                {{ item.text }}
-            </div>
-        </div>
+        <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" />
     </div>
 </template>
 
@@ -34,6 +30,10 @@
                     active: 1
                     }]
             };
+        },
+
+        components: {
+            item: require('./AdminItem'),
         },
 
         methods: {
