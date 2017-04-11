@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div class="admin">
         <h1>{{ box.name }}</h1>
         <div class="col-sm-6">
@@ -7,9 +8,23 @@
                 <button type="button" class="btn btn-secondary" v-on:click="sort('text')">Sort by Text</button>
             </div>
             <button type="button" v-on:click="exportData()">Export to Csv</button>
+=======
+    <div class="panel">
+        <div class="panel-body">
+            <div class="admin">
+                <h1>{{ box.name }}</h1>
+                <div class="col-sm-6">
+                    <div class="btn-group" role="group" aria-label="Sorting">
+                        <button type="button" class="btn btn-secondary" v-on:click="sort('dateTime')">Sort by Date</button>
+                        <button type="button" class="btn btn-secondary" v-on:click="sort('text')">Sort by Popularity</button>
+                    </div>
+                    <input-tag placeholder="Add Tag" :tags="tags" validate="text"></input-tag>
+                </div>
+                <div class="clearfix"></div>
+                <item v-for="item of items" :text="item.text" :dateTime="item.dateTime"  :rating="item.rating" :key="item.guid" @remove="remove(item.guid)" />
+            </div>
+>>>>>>> 89c0cb31ea2153c62984e631fa41882e1d55d737
         </div>
-        <div class="clearfix"></div>
-        <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" @remove="remove(item.guid)" />
     </div>
 </template>
 
@@ -61,4 +76,8 @@
         }
     }
 </script>
+
+<style lang="less" scoped>
+
+</style>
 

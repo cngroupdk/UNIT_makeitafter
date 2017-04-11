@@ -1,42 +1,61 @@
 <template>
-    <div v-if="added" class="alert alert-success">
-        Room {{roomName}} added
-        <button class="btn btn-default" @click="reset">
-            Add another
-        </button>
-    </div>
-    <div v-else class="col-sm-12 col-lg-8">
-        <h1>
-            Add new room {{roomName}}
-        </h1>
-        <div class="container">
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Box name:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Name of room" v-model="roomName">
-                    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div v-if="added" class="alert alert-success">
+                Room {{roomName}} was sucessfully added&nbsp;
+                <button class="btn btn-default" @click="reset">
+                    Add another
+                </button>
+            </div>
+            <div v-else class="col-sm-12 col-lg-8">
+                <h1>
+                    Add new box {{roomName}}
+                </h1>
+                <div class="container">
+                    <form class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="name">Box name:</label>
+                            <div class="col-md-4">
+                                <input id="name" name="textinput" type="text" v-model="roomName" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Address:</label>
+                            <div class="col-md-4">
+                                <input id="textinput" name="textinput" type="text" v-model="address" class="form-control input-md">
+                            </div>
+                            <span v-show="!isAddressUnique" class="label label-danger">Address must be unique</span>
+                        </div>
+
+                        <!-- Prepended checkbox -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="prependedcheckbox">Add password:</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                              <span class="input-group-addon">
+                                  <input type="checkbox" v-model="addPassword">
+                              </span>
+                                    <input id="prependedcheckbox" :disabled="!addPassword" v-model="password" name="prependedcheckbox" class="form-control" type="password"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="singlebutton"></label>
+                            <div class="col-md-4">
+                                <button id="singlebutton" name="singlebutton" @click="onsubmit" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2">Address:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="must url-friendly and unique eq.: MyMother" v-model="address">
-                    </div>
-                    <span v-show="!isAddressUnique" class="label label-danger">Address must be unique</span>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" id="checkbox" v-model="addPassword">Add password :</label>
-                </div>
-                <div class="form-group" v-show="addPassword">
-                    <label class="control-label col-sm-2">Password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" placeholder="type password" v-model="password">
-                    </div>
-                </div>
-                <button type="button" :disabled="!valid" class="btn btn-primary" v-on:click="onsubmit()">Submit</button>
-            </form>
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -74,6 +93,7 @@
         },
         methods: {
             onsubmit: function (el) {
+                el.preventDefault();
                 if (this.valid) {
                     api.addBox({
                         "box": {
@@ -105,10 +125,5 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 
-    .hello {
-        h1 {
-            border: 3px black solid;
-        }
-        text-align: center;
-    }
+
 </style>

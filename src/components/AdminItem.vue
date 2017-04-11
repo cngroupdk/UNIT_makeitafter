@@ -8,9 +8,7 @@
             <div class="small text-muted" v-if="dateTime">
                 {{ formattedDateTime }}
             </div>
-            <div class="col-sm-4">
-                <input-tag class="" placeholder="add tags.." :tags="tags" validate="text" v-on=""></input-tag>
-            </div>
+            <div class="small">{{ rating }}</div>
         </div>
     </div>
 </template>
@@ -20,7 +18,7 @@
     import InputTag from 'vue-input-tag'
 
     export default {
-        props: ['text', 'dateTime'],
+        props: ['text', 'dateTime','rating'],
 
         data () {
             return {
