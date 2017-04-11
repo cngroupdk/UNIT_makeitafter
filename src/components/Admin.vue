@@ -1,34 +1,25 @@
 <template>
     <div class="admin">
-        <h1>
-
-        </h1>
-        <img src="../assets/logo.png">
-        <div class="alert alert-danger">{{ msg }}</div>
-        <p>
-            <a href="/about/nested">About</a>
-        </p>
+        <h1>{{ box.name }}</h1>
+        <div class="panel panel-primary" v-for="item of items">
+            <div class="panel-body">
+                {{ item.text }}
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'hello',
+
+        props: {
+            box: Object,
+            items: Array,
+        },
+
         data () {
-            return {
-                msg: 'Welcome to Your Vue.js App'
-            }
+            return {};
         }
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less" scoped>
-
-    .hello {
-        h1 {
-            border: 3px black solid;
-        }
-        text-align: center;
-    }
-</style>

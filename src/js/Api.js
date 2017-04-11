@@ -21,11 +21,15 @@ export default {
     },
 
     box(url) {
-        return this.request('get', 'suggestion-box').then(data => data.filter(data.url === url)[0]);
+        return this.request('get', 'suggestion-box').then(data => data.boxes.filter(i => i.url === url)[0]);
     },
 
     addBox(data) {
         return this.request('post', 'suggestion-box', data);
+    },
+
+    items(box) {
+        return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box || 1));
     }
 
 }
