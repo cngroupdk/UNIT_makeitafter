@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-12 col-lg-8">
         <h1>
-            Hello {{fullname}}
+            Add new room {{roomName}}
         </h1>
         <div class="container">
             <form class="form-horizontal">
@@ -16,6 +16,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="must url-friendly and unique eq.: MyMother" v-model="address">
                     </div>
+                    <span v-show="!isAddressUnique" class="label label-danger">Address must be unique</span>
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox" id="checkbox" v-model="addPassword">Add password :</label>
@@ -47,8 +48,19 @@
         },
         watch : {
             address : function () {
-                    // TODO: check if is unique
-                    console.log("address changed " + this.address);
+                // TODO: check if is unique
+                api.boxes().done( (data) => {
+                    let flag = true;
+                    data.forEach( (item) => {
+                        console.log(item);
+                       if(item.url === this.address) {
+                           flag = false;
+                       }
+                    });
+                    this.isAddressUnique = flag;
+                });
+                console.log("address changed " + this.address);
+
             }
         },
         methods: {
@@ -62,9 +74,11 @@
                             "type": "SUGGESTION",
                             "category": "Other",
                             "password": this.password
-                    }}).done(function() {
-                        // TODO: Box is successfully aadded mesage
-                        console.log("Room added");
+                    }}).done(function(message) {
+                        if (message.message == "success") {
+                            // TODO: Box is successfully aadded mesage
+                            console.log("Room added");
+                        }
                     });
                 }
             }

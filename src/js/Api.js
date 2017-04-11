@@ -17,7 +17,7 @@ export default {
     },
 
     boxes() {
-        return this.request('get', 'suggestion-box');
+        return this.request('get', 'suggestion-box').then(response => response.boxes);
     },
 
     box(url) {
