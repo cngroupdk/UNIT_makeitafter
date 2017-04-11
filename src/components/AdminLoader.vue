@@ -1,9 +1,9 @@
 <template>
     <div v-if="data">
-        <Admin :items="data.items"></Admin>
+        <Admin :box="data.box" :items="data.items"></Admin>
     </div>
     <div v-else="data">
-        <h1 v-trans>
+        <h1>
             loading...
         </h1>
     </div>
@@ -21,9 +21,11 @@
 
         mounted() {
             setTimeout(() => {
-                api.box($.router.currentParameters.box).done(response => {
-                    console.log(response);
-                    this.data = response;
+                const box = $.router.currentParameters.box;
+                api.box(box).done(box => {
+                    api.items(box).done(items => {
+                        this.data = {box, items};
+                    });
                 })
             }, 100);
         },
