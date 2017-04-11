@@ -29,6 +29,16 @@ export default {
 
     items(box) {
         return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box || 1));
+    },
+
+    addItem(box, text) {
+        return this.request('post', 'suggestion-item', {
+            item: {
+                dateTime: new Date() + '',
+                text,
+                box,
+            }
+        })
     }
 
 }

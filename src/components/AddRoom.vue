@@ -1,5 +1,11 @@
 <template>
-    <div class="col-sm-12 col-lg-8">
+    <div v-if="added" class="alert alert-success">
+        Room {{roomName}} added
+        <button class="btn btn-default" @click="reset">
+            Add another
+        </button>
+    </div>
+    <div v-else class="col-sm-12 col-lg-8">
         <h1>
             Add new room {{roomName}}
         </h1>
@@ -27,7 +33,7 @@
                         <input type="password" class="form-control" placeholder="type password" v-model="password">
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" v-on:click="onsubmit()">Submit</button>
+                <button type="button" :disabled="!valid" class="btn btn-primary" v-on:click="onsubmit()">Submit</button>
             </form>
         </div>
     </div>
@@ -42,30 +48,33 @@
                 roomName: '',
                 address: '',
                 addPassword : false,
-                isAddressUnique: true // TODO:
-
+                isAddressUnique: true,
+                password: '',
+                added: false,
+            }
+        },
+        computed: {
+            valid() {
+                return this.isAddressUnique && this.address !== '';
             }
         },
         watch : {
             address : function () {
-                // TODO: check if is unique
                 api.boxes().done( (data) => {
                     let flag = true;
                     data.forEach( (item) => {
-                        console.log(item);
                        if(item.url === this.address) {
                            flag = false;
                        }
                     });
                     this.isAddressUnique = flag;
                 });
-                console.log("address changed " + this.address);
 
             }
         },
         methods: {
             onsubmit: function (el) {
-                if (this.isAddressUnique) {
+                if (this.valid) {
                     api.addBox({
                         "box": {
                             "name": this.roomName,
@@ -73,13 +82,21 @@
                             "type": "SUGGESTION",
                             "category": "Other",
                             "password": this.password
-                    }}).done(function(message) {
+                    }}).done((message) => {
                         if (message.message === "success") {
-                            // TODO: Box is successfully added mesage
-                            console.log("Room added");
+                            this.added = true;
                         }
                     });
                 }
+            },
+            reset() {
+                this.added = false;
+                this.address = '';
+                this.isAddressUnique = true;
+                this.name = '';
+                this.url = '';
+                this.password = '';
+                this.addPassword = false;
             }
         }
     }

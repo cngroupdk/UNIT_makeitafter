@@ -5,7 +5,7 @@ export default [
     {
         path: '/',
         name: 'default',
-        component: require('./components/Hello'),
+        component: require('./components/Categories'),
 
     },
     {
@@ -15,7 +15,12 @@ export default [
 
     },
 
-    // Account
+    {
+        path: '/:box',
+        name: 'box',
+        component: require('./components/BoxLoader'),
+    },
+
     {
         path: '/:box/admin',
         name: 'admin',
