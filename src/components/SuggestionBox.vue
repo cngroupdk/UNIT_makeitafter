@@ -58,6 +58,7 @@
         },
 
         mounted() {
+            reloadSuggestion();
             api.box(this.$route.params.box).done(box => this.box = box);
         },
 

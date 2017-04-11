@@ -39,5 +39,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
+    .panel {
+        margin: 1em;
+        background: transparent;
+        color: #fff;
+        text-shadow: #000 0 0 2px;
+    }
 
+    .panel a {
+        color: white;
+    }
+
+    .panel a:hover {
+        text-decoration: none;
+        text-shadow: #000 0 0 10px;
+    }
 </style>
