@@ -5,17 +5,6 @@ import api from './Api.js';
 
 $(() => {
 
-
-    $.router.add("/box/:boxUrl", function(box) {
-
-        api.box(box.boxUrl).done((dataBox) => {
-
-        });
-    });
-
-
-
-
     $('.route')
         .hide()
         .on('click', 'a', function(e) {

@@ -2,32 +2,32 @@ import Vue from 'vue'
 import $ from 'jquery'
 import translate from 'vue-translate'
 
+
+import VueRouter from 'vue-router';
+import routes from './routes';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes,
+});
+
+
 Vue.config.productionTip = false;
 
 // the messages data
 translate.messages = require('./messages');
 Vue.use(translate);
 
-// load all Vue components
-$(() => {
-  $('[data-vue-component]').each(function() {
 
-    Vue.use(translate);
+Vue.router = router;
 
-    const componentName = $(this).data('vue-component');
-    const component = require(`./components/${componentName}.vue`); // dynamically load required component
-    const name = componentName.substr(componentName.lastIndexOf('/') + 1); // auto derive component name as file name
-    const data = $(this).data('vue-data') || {};
-    // dynamically create template for the component, with keys derived from its data
-    const template = `<${name} ${Object.keys(data).map(key => `:${key}="${key}"`).join(' ')} />`;
-    new Vue({
-        el: this,
-        components: {[name]: component},
-        data,
-        template,
-    });
-  })
-});
+new Vue({
+    el: '#app',
+    router,
+    template: '<router-view></router-view>',
+})
 
 
 // initialize Bootstrap

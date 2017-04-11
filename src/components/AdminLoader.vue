@@ -21,7 +21,7 @@
 
         mounted() {
             setTimeout(() => {
-                const box = $.router.currentParameters.box;
+                const box = this.$route.params.box;
                 api.box(box).done(box => {
                     api.items(box).done(items => {
                         this.data = {box, items};
