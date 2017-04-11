@@ -2,7 +2,10 @@
     <div class="panel panel-primary">
         <div class="panel-body">
             {{ text }}
-            <div class="small pull-right" v-if="dateTime">
+            <a href="#" class="pull-right btn" @click="remove">
+                &times;
+            </a>
+            <div class="small text-muted" v-if="dateTime">
                 {{ formattedDateTime }}
             </div>
         </div>
@@ -17,6 +20,13 @@
         computed: {
             formattedDateTime() {
                 return moment(this.dateTime).format('DD. MM. YYYY HH:mm')
+            }
+        },
+
+        methods: {
+            remove(e) {
+                e.preventDefault();
+                this.$emit('remove');
             }
         }
     }

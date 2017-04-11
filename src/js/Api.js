@@ -43,7 +43,13 @@ export default {
     },
 
     editItem(item) {
-        return requet('put', 'suggestion-item', item);
+        return this.request('put', 'suggestion-item', item);
+    },
+
+    removeItem(itemGuid) {
+        return this.request('delete', 'suggestion-item', {
+            item: {guid: itemGuid},
+        });
     }
 
 }
