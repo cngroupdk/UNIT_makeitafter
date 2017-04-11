@@ -23,7 +23,7 @@
             setTimeout(() => {
                 const box = this.$route.params.box;
                 api.box(box).done(box => {
-                    api.items(box).done(items => {
+                    api.items(box.url).done(items => {
                         this.data = {box, items};
                     });
                 })
