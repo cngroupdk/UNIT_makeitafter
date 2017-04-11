@@ -42,8 +42,8 @@
                 roomName: '',
                 address: '',
                 addPassword : false,
-                isAddressUnique: true // TODO:
-
+                isAddressUnique: true,
+                password: '',
             }
         },
         watch : {
