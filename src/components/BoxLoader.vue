@@ -8,13 +8,15 @@
                 Box not found
             </div>
         </div>
-        <div v-if="box && box.password && !access">
-            <h1>Box {{box.name}} is protected by password:</h1>
-            <form @submit="checkPassword">
-                <input class="form-control" type="password" v-model="password">
-                <button :disabled="password === ''" class="btn btn-primary" type="submit">Let me in</button>
+        <div v-if="box && box.password && !access" class="panel">
+            <div class="panel-body">
+                <h1>Box {{box.name}} is protected by password:</h1>
+                <form @submit="checkPassword">
+                    <input class="form-control" type="password" v-model="password">
+                    <button :disabled="password === ''" class="btn btn-primary" type="submit">Let me in</button>
+                </form>
                 <div v-if="wrongPassword" class="alert alert-danger">Wrong password</div>
-            </form>
+            </div>
         </div>
         <div v-if="box && access">
             <suggestion-box :box="box" />
@@ -70,3 +72,17 @@
 
     }
 </script>
+
+<style lang="less" scoped>
+
+    input[type=password] {
+        width: 200px;
+        display: inline-block;
+    }
+
+    form button {
+        display: inline-block;
+    }
+
+
+</style>
