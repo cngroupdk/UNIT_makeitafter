@@ -13,6 +13,7 @@
             <form @submit="checkPassword">
                 <input class="form-control" type="password" v-model="password">
                 <button :disabled="password === ''" class="btn btn-primary" type="submit">Let me in</button>
+                <div v-if="wrongPassword" class="alert alert-danger">Wrong password</div>
             </form>
         </div>
         <div v-if="box && access">
@@ -30,6 +31,7 @@
                 box: false,
                 access: false,
                 password: '',
+                wrongPassword: false,
             }
         },
 
@@ -46,14 +48,22 @@
             }, 100);
         },
 
+        watch: {
+            password(newPassword, oldPassword) {
+                if (newPassword !== '') {
+                    this.wrongPassword = false;
+                }
+            }
+        },
+
         methods: {
             checkPassword(e) {
                 e.preventDefault();
                 if (this.password === this.box.password) {
                     this.access = true;
                 } else {
-                    alert('Wrong password');
                     this.password = '';
+                    this.wrongPassword = true;
                 }
             }
         }
