@@ -11,6 +11,9 @@ Vue.use(translate);
 // load all Vue components
 $(() => {
   $('[data-vue-component]').each(function() {
+
+    Vue.use(translate);
+
     const componentName = $(this).data('vue-component');
     const component = require(`./components/${componentName}.vue`); // dynamically load required component
     const name = componentName.substr(componentName.lastIndexOf('/') + 1); // auto derive component name as file name
