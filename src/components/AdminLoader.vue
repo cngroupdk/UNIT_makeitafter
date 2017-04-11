@@ -1,6 +1,6 @@
 <template>
     <div v-if="data">
-        <Admin :box="data.box" :items="data.items"></Admin>
+        <Admin :box="data.box" :items="data.items" @remove="remove"></Admin>
     </div>
     <div v-else="data">
         <h1>
@@ -21,13 +21,26 @@
 
         mounted() {
             setTimeout(() => {
+                this.reload();
+            }, 100);
+        },
+
+        methods: {
+
+            reload() {
                 const box = this.$route.params.box;
                 api.box(box).done(box => {
-                    api.items(box).done(items => {
+                    api.items(box.url).done(items => {
                         this.data = {box, items};
                     });
                 })
-            }, 100);
+            },
+
+            remove(guid) {
+                api.removeItem(guid).done(() => {
+                    this.reload();
+                })
+            }
         },
 
         components: {

@@ -9,12 +9,13 @@
             <input-tag placeholder="Add Tag" :tags="tags" validate="text"></input-tag>
         </div>
         <div class="clearfix"></div>
-        <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" />
+        <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" @remove="remove(item.guid)" />
     </div>
 </template>
 
 <script>
     import InputTag from 'vue-input-tag'
+    import api from '../js/Api.js';
     export default {
 
         props: {
@@ -28,7 +29,7 @@
 
         data () {
             return {
-                tags: ["A", "SDF"]
+                tags: []
             };
         },
 
@@ -49,6 +50,10 @@
                        return 1;
                    }
                 });
+            },
+            remove(guid) {
+                console.log(guid);
+                this.$emit('remove', guid);
             }
         }
     }

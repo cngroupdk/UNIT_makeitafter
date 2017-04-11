@@ -29,7 +29,7 @@ export default {
     },
 
     items(box) {
-        return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box || 1));
+        return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box));
     },
 
     addItem(box, text) {
@@ -43,7 +43,13 @@ export default {
     },
 
     editItem(item) {
-        return requet('put', 'suggestion-item', item);
+        return this.request('put', 'suggestion-item', item);
+    },
+
+    removeItem(itemGuid) {
+        return this.request('delete', 'suggestion-item', {
+            item: {guid: itemGuid},
+        });
     }
 
 }
