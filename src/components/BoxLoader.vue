@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="box">
+        <div v-if="!box">
             Loading...
         </div>
         <div v-if="box.password && !access">
