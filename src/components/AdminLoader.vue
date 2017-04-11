@@ -1,6 +1,6 @@
 <template>
     <div v-if="data">
-        <Admin :items="data.items"></Admin>
+        <Admin :box="data.box" :items="data.items"></Admin>
     </div>
     <div v-else="data">
         <h1>

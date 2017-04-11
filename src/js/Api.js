@@ -29,7 +29,7 @@ export default {
     },
 
     items(box) {
-        return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box));
+        return this.request('get', 'suggestion-item').then(data => data.items.filter(i => i.box === box || 1));
     }
 
 }
