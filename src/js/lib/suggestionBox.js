@@ -96,10 +96,12 @@ var __slice = [].slice;
             })
         }
     })
-})(window.jQuery, window);
+})($, window);
 $(function() { return $(".starrr").starrr() })
 
-$(function() {
+let reload;
+
+$(reload = function() {
 
     $('#new-review').autosize({ append: "\n" });
 
@@ -132,3 +134,5 @@ $(function() {
         ratingsField.val(value);
     });
 });
+
+export default reload;

@@ -35,6 +35,7 @@
 <script>
 
     import $ from 'jquery'
+    import reloadSuggestion from '../js/lib/suggestionBox.js'
     export default {
         data () {
             return {
@@ -42,6 +43,10 @@
 
                 }
             }
+        },
+
+        mounted() {
+            reloadSuggestion();
         }
     };
 </script>

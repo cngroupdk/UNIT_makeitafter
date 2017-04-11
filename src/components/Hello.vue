@@ -5,9 +5,6 @@
         </h1>
         <img src="../assets/logo.png">
         <div class="alert alert-danger">{{ msg }}</div>
-        <p>
-            <a href="/about/nested">About</a>
-        </p>
     </div>
 </template>
 

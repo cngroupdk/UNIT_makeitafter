@@ -15,7 +15,12 @@ export default [
 
     },
 
-    // Account
+    {
+        path: '/:box',
+        name: 'box',
+        component: require('./components/SuggestionBox'),
+    },
+
     {
         path: '/:box/admin',
         name: 'admin',
