@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container suggestionbox-wrap" >
         <div v-if="showLoading" class="row">
             <div class="alert alert-info">
                 Saving...
@@ -10,26 +10,25 @@
                 Thank you!
             </div>
         </div>
-        <div v-show="!showLoading && !showThanks" class="row" style="margin-top:40px;">
-            <div class="col-md-6">
-                <div class="well well-sm">
-                    <div class="text-right">
-                        <a class="btn btn-success btn-green" href="#reviews-anchor"
-                           id="open-review-box">Leave a Review</a>
-                    </div>
+        <div v-show="!showLoading && !showThanks" class="row">
+            <div class="col-md-12">
+                <div class="well  box-innerwrap">
+                    
+                        <a class="btn btn-success suggestion-open" href="#reviews-anchor"
+                           id="open-review-box">Throw a Suggestion <br><span class="fa fa-envelope-open-o">
+                           </span></a>
+        
 
                     <div class="row" id="post-review-box" style="display:none;">
                         <div class="col-md-12">
                             <input id="ratings-hidden" name="rating" type="hidden">
-                            <textarea class="form-control animated" cols="50" id="new-review" v-model="text"
-                                      placeholder="Enter your review here..." rows="5"></textarea>
+                            <textarea class="form-control animated suggestion-textarea" cols="50" id="new-review" v-model="text"
+                                      placeholder="Your suggestion..." rows="5"></textarea>
 
                             <div class="text-right">
                                 <div class="stars starrr" data-rating="0"></div>
-                                <a class="btn btn-danger btn-sm" href="#" id="close-review-box"
-                                   style="display:none; margin-right: 10px;">
-                                    <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-                                <button class="btn btn-success btn-lg" type="submit" @click="save">Save</button>
+                
+                                <button class="btn suggestion-post" type="submit" @click="save"><span class="fa fa-envelope "></span> Send</button>
                             </div>
                         </div>
                     </div>
