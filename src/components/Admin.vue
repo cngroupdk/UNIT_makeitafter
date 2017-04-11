@@ -22,13 +22,7 @@
 
         data () {
             return {
-                tags: [{
-                        name: "critical",
-                        active: 1
-                    }, {
-                    name: "warnning",
-                    active: 1
-                    }]
+                tags: []
             };
         },
 
@@ -46,7 +40,6 @@
                 });
             },
             sort : function(criterion) {
-                console.log(this.items[0].tags);
                 this.items.sort((a, b)=> {
                    if (a[criterion] < b[criterion]) {
                        return -1;
