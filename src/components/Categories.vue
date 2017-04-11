@@ -44,6 +44,9 @@
         background: transparent;
         color: #fff;
         text-shadow: #000 0 0 2px;
+        height: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .panel a {
