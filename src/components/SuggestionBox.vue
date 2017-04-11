@@ -11,6 +11,7 @@
             </div>
         </div>
         <div v-show="!showLoading && !showThanks" class="row">
+            <h2>{{ box && box.name }}</h2>
             <div class="col-md-12">
                 <div class="well  box-innerwrap">
                     
@@ -49,6 +50,7 @@
     export default {
         data () {
             return {
+                box: false,
                 text: '',
                 showLoading: false,
                 showThanks: false,
@@ -56,7 +58,7 @@
         },
 
         mounted() {
-            reloadSuggestion();
+            api.box(this.$route.params.box).done(box => this.box = box);
         },
 
         methods: {
