@@ -8,11 +8,7 @@
         <div class="container">
             <input-tag placeholder="Add Tag" :tags="tags" validate="text"></input-tag>
         </div>
-        <div class="panel panel-primary" v-for="item of items">
-            <div class="panel-body">
-                {{ item.text }}
-            </div>
-        </div>
+        <item v-for="item of items" :text="item.text" :dateTime="item.dateTime" :key="item.guid" />
     </div>
 </template>
 
@@ -32,6 +28,10 @@
             return {
                 tags: ["helpdeskissue"]
             };
+        },
+
+        components: {
+            item: require('./AdminItem'),
         },
 
         methods: {
