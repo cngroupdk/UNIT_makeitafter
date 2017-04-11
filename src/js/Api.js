@@ -22,6 +22,9 @@ export default {
 
     box(url) {
         return this.request('get', 'suggestion-box').then(data => data.filter(data.url === url)[0]);
+    },
+
+    addBox(data) {
     }
 
 }
