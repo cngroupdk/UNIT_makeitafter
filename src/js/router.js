@@ -3,6 +3,15 @@ import './lib/jquery.router';
 
 $(() => {
 
+
+    $.router.add("/box/:boxUrl", function(box) {
+        console.log(box.boxUrl);
+
+    });
+
+
+
+
     $('.route')
         .hide()
         .on('click', 'a', function(e) {

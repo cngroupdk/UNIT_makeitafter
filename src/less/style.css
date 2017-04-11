@@ -1,0 +1,14 @@
+body h1 {
+  position: relative;
+}
+body h1::before {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  font-size: .4em;
+  content: "less rules!!";
+}
+.route,
+.route-error {
+  display: none;
+}
