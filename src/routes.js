@@ -18,7 +18,7 @@ export default [
     {
         path: '/:box',
         name: 'box',
-        component: require('./components/SuggestionBox'),
+        component: require('./components/BoxLoader'),
     },
 
     {
