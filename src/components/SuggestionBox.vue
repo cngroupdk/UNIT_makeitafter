@@ -50,6 +50,7 @@
     export default {
         data () {
             return {
+                rating: '',
                 text: '',
                 box:'',
                 showLoading: false,
