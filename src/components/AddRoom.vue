@@ -6,7 +6,7 @@
         <div class="container">
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="roomName">Room name:</label>
+                    <label class="control-label col-sm-2" for="roomName">Box name:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" placeholder="Name of room" v-model="roomName">
                     </div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+    import api from '../js/Api'
     export default {
         name: 'add',
         data () {
@@ -40,27 +41,31 @@
                 roomName: '',
                 address: '',
                 addPassword : false,
-                isAddressUnique: false
+                isAddressUnique: true // TODO:
 
             }
         },
-        computed : {
-            address : {
-                get: function () {
-
-                    return this.address;
-                },
-                set: function (value) {
+        watch : {
+            address : function () {
                     // TODO: check if is unique
-                    console.log("address changed");
-
-                }
+                    console.log("address changed " + this.address);
             }
         },
         methods: {
             onsubmit: function (el) {
                 if (this.isAddressUnique) {
-                    console.log("hello");
+                    api.addBox({
+                        "box": {
+                            "guid": "ABCD-1234",
+                            "name": this.roomName,
+                            "url": this.address,
+                            "type": "SUGGESTION",
+                            "category": "Other",
+                            "password": this.password
+                    }}).done(function() {
+                        // TODO: Box is successfully aadded mesage
+                        console.log("Room added");
+                    });
                 }
             }
         }
